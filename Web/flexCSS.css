@@ -1,0 +1,8 @@
+.div-flex{
+    width: 80%;
+    height: 800px;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}

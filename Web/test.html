@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>我的博客</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 36px;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    button {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+
+    form {
+      display: none;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    input[type="submit"] {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>我的博客</h1>
+  </header>
+  <main>
+    <button id="add-article-button">添加文章</button>
+    <form id="add-article-form">
+      <label for="article-title">标题</label>
+      <input type="text" id="article-title" name="article-title" required>
+      <label for="article-content">内容</label>
+      <textarea id="article-content" name="article-content" rows="5" required></textarea>
+      <input type="submit" value="发布">
+    </form>
+  </main>
+  <script>
+    const addArticleButton = document.getElementById('add-article-button');
+    const addArticleForm = document.getElementById('add-article-form');
+    addArticleButton.addEventListener('click', () => {
+      addArticleForm.style.display = 'block';
+    });
+    addArticleForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const title = document.getElementById('article-title').value;
+      const content = document.getElementById('article-content').value;
+      const articleList = document.createElement('ul');
+      const articleListItem = document.createElement('li');
+      articleListItem.innerHTML = `<h2>${title}</h2><p>${content}</p>`;
+      articleList.appendChild(articleListItem);
+      document.body.appendChild(articleList);
+      addArticleForm.reset();
+      addArticleForm.style.display = 'none';
+    });
+  </script>
+</body>
+
+</html>
